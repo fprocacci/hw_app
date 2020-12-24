@@ -1,30 +1,38 @@
 <script>
-	export let name;
+	import Timer from "./Timer.svelte";
+	import HowTo from "./HowTo.svelte";
+	let audio;
+
+	function timerEnds(e) {
+		console.log(e);
+		audio.play();
+	}
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
 <style>
-	main {
+	h1,
+	h3 {
 		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
 	}
 </style>
+
+<h1>Handwashing App</h1>
+
+<Timer on:end={timerEnds} />
+<HowTo />
+
+<h3>
+	<!-- This url doesn't exist on Dec 20, 2020 at 1151 -->
+	<a
+		href="https://www.who.int/docs/default-source/patient-safety/how-to-handwash-poster.pdf?sfvrsn=7004a09d_2">Picture
+		Source</a>
+
+	<a href="https://freesound.org/people/metrostock99/sounds/345086/">Sound
+		Source</a>
+</h3>
+
+<!-- <audio src="short_sound.wav" /> -->
+
+<audio bind:this={audio}>
+	<source src="short_sound.wav" />
+</audio>

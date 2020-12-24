@@ -22,3 +22,7 @@ button {
     flex: 1;
     cursor: pointer;
 }
+
+.test_class {
+    color: orange;
+}
